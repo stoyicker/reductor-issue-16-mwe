@@ -1,0 +1,52 @@
+final def buildToolsVersionValue = "25.0.1"
+final def compileSdkVersionValue = 25
+final def minSdkVersionValue = 21
+final def targetSdkVersionValue = 25
+final def versionCodeValue = 1
+final def versionNameValue = '0'
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+
+    buildToolsVersion buildToolsVersionValue
+    compileSdkVersion compileSdkVersionValue
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+
+        release {
+            minifyEnabled true // TODO Set to false, problem gone
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    defaultConfig {
+        applicationId "demo.app.id"
+        minSdkVersion minSdkVersionValue
+        targetSdkVersion targetSdkVersionValue
+        versionCode versionCodeValue
+        versionName versionNameValue
+    }
+
+    productFlavors {
+        standard { }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += 'src/main/kotlin'
+        }
+        test {
+            java.srcDirs += 'src/test/kotlin'
+        }
+    }
+}

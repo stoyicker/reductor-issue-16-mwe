@@ -1,0 +1,20 @@
+buildscript {
+
+    final def androidCheckPluginVersion = '1.2.3'
+
+    final def classpathDependencies = [
+            "com.noveogroup.android:check:$androidCheckPluginVersion"
+    ]
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath classpathDependencies
+    }
+}
+
+apply from: 'buildsystem/android.gradle'
+apply from: 'buildsystem/plugin_kapt.gradle'
+apply from: 'buildsystem/dependencies.gradle'

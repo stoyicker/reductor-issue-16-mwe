@@ -1,0 +1,22 @@
+buildscript {
+    final def gradlePluginVersion = "2.2.2"
+    final def kotlinPluginVersion = rootProject.ext.kotlinVersion = "1.0.5"
+
+    final def classpathDependencies = [
+            "com.android.tools.build:gradle:$gradlePluginVersion",
+            "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinPluginVersion"
+    ]
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath classpathDependencies
+    }
+}
+
+task clean(type: Delete) {
+    rootProject.allprojects.forEach { project -> delete project.buildDir }
+    followSymlinks false
+}
